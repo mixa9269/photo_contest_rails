@@ -29,3 +29,15 @@ html {
 .logo {
   height: 38px;
 }
+
+.header {
+  min-height: 74px;
+
+  &__avatar {
+    height: 26px;
+    border-radius: 50%;
+    position: relative;
+    top: -1px;
+    margin-right: 5px;
+  }
+}
