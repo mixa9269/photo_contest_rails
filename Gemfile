@@ -60,6 +60,7 @@ end
 
 group :production do
   gem 'pg'
+  gem 'fog'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -69,3 +70,5 @@ gem 'bootstrap', '~> 4.3.1'
 
 gem 'omniauth-vkontakte'
 gem 'jquery-rails'
+gem 'carrierwave'
+gem 'mini_magick'
