@@ -1,0 +1,36 @@
+doctype html
+html
+  head
+    meta content=("text/html; charset=UTF-8") http-equiv="Content-Type" /
+    title PhotoContestRails
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  body
+    header.header.bg-dark.box-shadow
+      .container.d-flex.flex-column.flex-md-row.align-items-center.p-3
+        a.mr-md-auto href="/" 
+          = image_tag("logo.png", :alt => "logo", :class => "logo")
+        nav.my-2.my-md-0.mr-md-3
+        - if current_user
+          .btn-group
+            button.btn.btn-dark.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" type="button" 
+              = image_tag(current_user.profile_image, :alt => "avatar", :class => "header__avatar")
+              = current_user.first_name
+            .dropdown-menu.dropdown-menu-right
+              = link_to 'Upload photo', new_photo_path, class: 'dropdown-item'
+              .dropdown-divider
+              = link_to 'Log Out', logout_path, method: :delete, class: 'dropdown-item'
+        - else
+          a.btn.btn-dark href="/auth/vkontakte"  Sign in
+    - if @is_main_page
+      .welcome_block
+        div
+          h1 Free photo contests
+          p Upload your photo now to win great prizes and your work seen around the world. Get inspired and join thousands sharing their passion for photography.
+          a.btn.btn-outline-light href="#"  Upload photo
+    main.container
+      - flash.each do |message_type, message|
+        div class=("alert alert-#{message_type}") = message
+      = yield
