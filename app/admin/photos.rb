@@ -3,9 +3,9 @@ ActiveAdmin.register Photo do
     selectable_column
     column :title
     column :photo do |pg|
-      image_tag pg.photo.url, class: 'admin_photo'
+      image_tag pg.photo.thumb.url, class: 'admin_photo'
     end
-    column "Current Status", :aasm_state
+    column "Status", :aasm_state
     column "Moderation", :moderation do |pg|
       columns do
         if pg.aasm_state == 'unapproved'
