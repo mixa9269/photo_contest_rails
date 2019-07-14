@@ -1,10 +1,10 @@
 ActiveAdmin.register Photo do
   index do
     selectable_column
-    column :title
     column :photo do |pg|
-      image_tag pg.photo.thumb.url, class: 'admin_photo'
+      image_tag pg.photo.thumb.url
     end
+    column :title
     column "Status", :aasm_state
     column "Moderation", :moderation do |pg|
       columns do

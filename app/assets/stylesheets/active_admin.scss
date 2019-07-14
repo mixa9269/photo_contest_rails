@@ -11,8 +11,12 @@
 @import "active_admin/mixins";
 @import "active_admin/base";
 
-.admin_photo {
+.col-photo {
   width: 200px;
+}
+
+.col-title {
+  width: 100%;
 }
 
 // Overriding any non-variable SASS must be done after the fact.
