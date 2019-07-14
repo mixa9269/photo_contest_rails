@@ -19,7 +19,7 @@ class PhotosController < ApplicationController
   private
 
     def photo_params
-      params.require(:photo).permit(:title, :photo)
+      params.require(:photo).permit(:title, :photo, :location)
     end
 
     def correct_user

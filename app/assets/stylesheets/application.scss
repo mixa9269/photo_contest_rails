@@ -14,8 +14,13 @@ html {
   }
 }
 
+body {
+  background: #0B0B0B;
+  color: #dcdcdc;
+}
+
 .container {
-  max-width: 960px;
+  max-width: 1300px;
 }
 
 .pricing-header {
@@ -28,6 +33,8 @@ html {
 
 .border-top { border-top: 1px solid #e5e5e5; }
 .border-bottom { border-bottom: 1px solid #e5e5e5; }
+.border-bottom-black { border-bottom: 1px solid #333; }
+
 
 .box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
 
@@ -87,5 +94,54 @@ html {
     height: 100%;
     background-color: rgba(0,0,0,.3);
     pointer-events: none;
+  }
+}
+
+.gallery {
+  width: 1300px;
+  margin: auto;
+  background-color: #121212;
+  border-left: 1px solid #333;
+  border-right: 1px solid #333;
+
+  @media (max-width: 1320px) {
+    width: auto;
+  }
+}
+
+.photo_card {
+  display: flex;
+
+  &__info {
+    width: 250px;
+    padding: 10px 20px;
+    border-right: 1px solid #333;
+    font-size: 13px;
+
+    &_location {
+      font-size: 17px;
+    }
+
+    &_description {
+      margin-top: 10px;
+    }
+
+    &_user {
+      margin-top: 5px;
+    }
+  }
+
+  &__photo {
+    padding: 10px;
+    max-height: 90vh;
+
+    @media (max-width: 1320px) {
+      max-width: calc(100vw - 250px);
+    }
+  }
+
+  &:first-child &__info,
+  &:first-child &__photo {
+    padding-top: 30px;
   }
 }

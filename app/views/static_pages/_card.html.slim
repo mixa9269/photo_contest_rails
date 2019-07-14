@@ -1,0 +1,7 @@
+.photo_card
+  .photo_card__info
+    -if card.location
+      .photo_card__info_location = card.location
+    .photo_card__info_description = card.title
+    .photo_card__info_user = "Photograph: #{card.user.name}"
+  img.photo_card__photo alt=card.title src=card.photo.large.url
