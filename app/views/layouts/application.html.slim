@@ -31,6 +31,7 @@ html
           p Upload your photo now to win great prizes and your work seen around the world. Get inspired and join thousands sharing their passion for photography.
           a.btn.btn-outline-light href=new_photo_path  Upload photo
     main.container
-      - flash.each do |message_type, message|
-        div class=("alert alert-#{message_type}") = message
-    = yield
+      .content
+        - flash.each do |message_type, message|
+          div class=("alert alert-#{message_type}") = message
+        = yield
