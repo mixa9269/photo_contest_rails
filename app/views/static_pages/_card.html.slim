@@ -4,4 +4,6 @@
       .photo_card__info_location = card.location
     .photo_card__info_description = card.title
     .photo_card__info_user = "Photograph: #{card.user.name}"
+    .photo_card__info_footer
+      = render "likes/like", photo: card
   img.photo_card__photo alt=card.title src=card.photo.large.url

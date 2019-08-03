@@ -1,0 +1,18 @@
+ruby:
+  photo = photo || @photo
+  count_likes = photo.likes.count
+
+div id="like_for_photo_#{photo.id}"
+  -if current_user.liked?(photo)
+    = form_for current_user.likes.find_by(photo_id: photo.id), html: { method: :delete }, remote: true do |f|
+      div = hidden_field_tag :photo_id, photo.id
+      button.button_like.button_like--liked type="submit"
+        =inline_svg 'heart_fill.svg', class: 'button_like__icon'
+        -if count_likes
+          span.button_like__count = count_likes
+
+  - else
+    = form_for photo.likes.build, remote: true do |f|
+      div = hidden_field_tag :photo_id, photo.id
+      button.button_like type="submit"
+        =inline_svg 'heart.svg', class: 'button_like__icon'

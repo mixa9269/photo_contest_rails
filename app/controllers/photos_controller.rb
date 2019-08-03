@@ -9,7 +9,7 @@ class PhotosController < ApplicationController
   def create
     @photo = current_user.photos.build(photo_params)
     if @photo.save
-      flash[:success] = 'Photo uploaded!'
+      flash[:success] = "Photo uploaded! It'll be in rating when it is approved"
       redirect_to root_url
     else
       render 'new'

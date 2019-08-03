@@ -1,8 +1,22 @@
 @import "bootstrap";
 
+@mixin hover {
+  &:active {
+    @content;
+  }
+
+  @media (hover: hover) {
+    &:hover { @content; }
+  }
+}
+
 @font-face {
   font-family: 'Bariol_bold';
   src: url('/assets/Bariol_Bold.otf') format("opentype");
+}
+
+* {
+  outline: none !important;
 }
 
 html {
@@ -20,6 +34,7 @@ body {
   flex-direction: column;
   background: #0B0B0B;
   color: #dcdcdc;
+  min-width: 600px;
 }
 
 main {
@@ -40,7 +55,7 @@ main {
   color: #dcdcdc !important;
   border: 1px solid #767676;
 
-  &:hover {
+  @include hover {
     border: 1px solid #ededed;
   }
 }
@@ -65,14 +80,18 @@ main {
 }
 
 .header {
-  min-height: 74px;
-
   &__avatar {
     height: 26px;
     border-radius: 50%;
     position: relative;
     top: -1px;
     margin-right: 5px;
+  }
+
+  &__user {
+    height: 40px;
+    display: flex;
+    justify-content: center;
   }
 }
 
@@ -153,6 +172,10 @@ main {
     &_user {
       margin-top: 5px;
     }
+
+    &_footer {
+      margin-top: 10px;
+    }
   }
 
   &__photo {
@@ -164,5 +187,34 @@ main {
   &:first-child &__info,
   &:first-child &__photo {
     padding-top: 30px;
+  }
+}
+
+.button_like {
+  background: none;
+  border: none;
+  color: #767676;
+  padding: 0;
+  transition: color 0.25s;
+
+  &:not(:disabled) {
+    @include hover {
+      color: #ededed;
+    }
+  }
+
+  &__icon {
+    width: 24px;
+  }
+
+  &--liked {
+    color: #ededed;
+  }
+
+  &__count {
+    position: relative;
+    top: 2px;
+    font-size: 14px;
+    margin-left: 6px;
   }
 }

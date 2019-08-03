@@ -1,5 +1,7 @@
 class User < ApplicationRecord
   has_many :photos, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :liked_photos, through: :likes, source: :photo
 
   def self.find_or_create_from_auth_hash(auth_hash)
     user = where(provider: auth_hash.provider, uid: auth_hash.uid).first_or_create
@@ -11,5 +13,9 @@ class User < ApplicationRecord
       secret: auth_hash.credentials.secret
     )
     user
+  end
+
+  def liked?(photo)
+    liked_photos.include?(photo)
   end
 end

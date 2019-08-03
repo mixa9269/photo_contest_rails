@@ -76,3 +76,6 @@ gem 'activeadmin'
 gem 'devise'
 gem 'slim'
 gem 'aasm'
+
+# SVG embedding
+gem 'inline_svg'

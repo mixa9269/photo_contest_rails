@@ -4,6 +4,7 @@ class Photo < ApplicationRecord
   belongs_to :user
   default_scope -> { order(created_at: :desc) }
   mount_uploader :photo, PictureUploader
+  has_many :likes, dependent: :destroy
   validates :user_id, presence: true, length: { maximum: 128 }
   validates :title, presence: true, length: { maximum: 500 }
   validates :photo, presence: true
