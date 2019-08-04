@@ -3,6 +3,8 @@ class Photo < ApplicationRecord
 
   belongs_to :user
   default_scope -> { order(created_at: :desc) }
+  scope :by_likes, -> { reorder(likes_count: :desc) }
+  scope :approved, -> { where(aasm_state: :approved) }
   mount_uploader :photo, PictureUploader
   has_many :likes, dependent: :destroy
   validates :user_id, presence: true, length: { maximum: 128 }

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_03_123556) do
+ActiveRecord::Schema.define(version: 2019_08_04_112502) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -48,11 +48,9 @@ ActiveRecord::Schema.define(version: 2019_08_03_123556) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["photo_id", "user_id"], name: "index_likes_on_photo_id_and_user_id", unique: true
     t.index ["photo_id"], name: "index_likes_on_photo_id"
     t.index ["user_id"], name: "index_likes_on_user_id"
-    t.index [nil, nil], name: "index_likes_on_photo_and_user", unique: true
-    t.index [nil], name: "index_likes_on_photo"
-    t.index [nil], name: "index_likes_on_user"
   end
 
   create_table "photos", force: :cascade do |t|
@@ -63,6 +61,7 @@ ActiveRecord::Schema.define(version: 2019_08_03_123556) do
     t.datetime "updated_at", null: false
     t.string "aasm_state"
     t.string "location"
+    t.integer "likes_count", default: 0
     t.index ["user_id", "created_at"], name: "index_photos_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_photos_on_user_id"
   end
