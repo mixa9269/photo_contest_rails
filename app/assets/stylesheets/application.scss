@@ -51,6 +51,15 @@ main {
   }
 }
 
+.btn-dark {
+  background-color: transparent !important;
+  border-color: #0B0B0B;
+
+  @include hover {
+    border-color: #343a40;
+  }
+}
+
 .btn-outline-light-2 {
   color: #dcdcdc !important;
   border: 1px solid #767676;
@@ -80,6 +89,9 @@ main {
 }
 
 .header {
+  background-color: #121212;
+  border-bottom: 1px solid #333;
+
   &__avatar {
     height: 26px;
     border-radius: 50%;
