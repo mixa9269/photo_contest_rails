@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   get '/gallery', to: 'static_pages#gallery'
   get '/auth/:provider/callback', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
-  get 'photos/new'
-  resources :photos, only: [:new, :create]
+  get '/api/photos/:photo_id/comments/', to: 'comments#list'
+  post '/api/photos/:photo_id/comments/', to: 'comments#create'
+  resources :photos, only: [:new, :create, :show]
   resources :likes, only: [:create, :destroy]
 end

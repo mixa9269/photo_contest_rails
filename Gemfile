@@ -79,3 +79,5 @@ gem 'aasm'
 
 # SVG embedding
 gem 'inline_svg'
+
+gem 'active_model_serializers'

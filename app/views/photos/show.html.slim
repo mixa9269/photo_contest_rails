@@ -1,0 +1,15 @@
+-if @photo
+  -if @photo.approved?
+    ruby:
+      profile_image = current_user ? current_user.profile_image : 'https://viima-app.s3.amazonaws.com/media/public/defaults/user-icon.png'
+    javascript:
+      window.pc = {};
+      window.pc.profilePictureURL = "#{profile_image}";
+      window.pc.photoId = #{@photo.id}
+    .row.border-bottom 
+      = render 'photos/card', card: @photo
+    #comments.photo__comments
+  -else
+    | Photo is not approved
+-else
+  | Photo is not found

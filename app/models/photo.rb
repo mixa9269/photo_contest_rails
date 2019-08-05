@@ -7,6 +7,7 @@ class Photo < ApplicationRecord
   scope :approved, -> { where(aasm_state: :approved) }
   mount_uploader :photo, PictureUploader
   has_many :likes, dependent: :destroy
+  has_many :comments, dependent: :destroy
   validates :user_id, presence: true, length: { maximum: 128 }
   validates :title, presence: true, length: { maximum: 500 }
   validates :photo, presence: true
@@ -23,6 +24,10 @@ class Photo < ApplicationRecord
     event :unapprove do
       transitions from: :approved, to: :unapproved
     end
+  end
+
+  def approved?
+    aasm_state == 'approved'
   end
 
   private

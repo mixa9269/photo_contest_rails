@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_04_112502) do
+ActiveRecord::Schema.define(version: 2019_08_05_134757) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -43,6 +43,17 @@ ActiveRecord::Schema.define(version: 2019_08_04_112502) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.integer "photo_id"
+    t.integer "user_id"
+    t.text "content"
+    t.integer "parent_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["photo_id"], name: "index_comments_on_photo_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
   create_table "likes", force: :cascade do |t|
     t.integer "photo_id"
     t.integer "user_id"
@@ -62,6 +73,7 @@ ActiveRecord::Schema.define(version: 2019_08_04_112502) do
     t.string "aasm_state"
     t.string "location"
     t.integer "likes_count", default: 0
+    t.integer "comments_count"
     t.index ["user_id", "created_at"], name: "index_photos_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_photos_on_user_id"
   end
