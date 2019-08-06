@@ -251,3 +251,30 @@ main {
   margin-left: 5px;
   margin-top: 20px;
 }
+
+.form-control,
+.form-control:focus {
+  border: 1px solid #333;
+  background: rgba(0, 0, 0, 0.25);
+  box-shadow: none;
+  color: #dcdcdc;
+}
+
+.custom-file-input {
+  cursor: pointer;
+
+  &:focus ~ .custom-file-label {
+    border: 1px solid #333;
+    box-shadow: none;
+  }
+}
+
+.custom-file-label {
+  border: 1px solid #333;
+  background: rgba(0, 0, 0, 0.25);
+
+  &:after {
+    background: none;
+    color: #dcdcdc;
+  }
+}
