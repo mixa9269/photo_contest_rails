@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_05_134757) do
+ActiveRecord::Schema.define(version: 2019_08_06_100647) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -73,7 +73,7 @@ ActiveRecord::Schema.define(version: 2019_08_05_134757) do
     t.string "aasm_state"
     t.string "location"
     t.integer "likes_count", default: 0
-    t.integer "comments_count"
+    t.integer "comments_count", default: 0
     t.index ["user_id", "created_at"], name: "index_photos_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_photos_on_user_id"
   end

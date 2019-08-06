@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
     @comment = @photo.comments.build
     @comment.user_id = current_user.id
     @comment.content = params[:content]
-    parent_id = params[:parent]
+    parent_id = params[:parent_id]
     @comment.parent_id = parent_id
     if @comment.valid?
       @comment.save

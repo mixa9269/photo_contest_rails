@@ -1,4 +1,4 @@
-$().ready(() => {
+$(document).on('ready turbolinks:load', () => {
   const $comments = $('#comments');
   
   if ($comments[0]) {

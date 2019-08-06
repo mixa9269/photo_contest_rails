@@ -6,4 +6,8 @@
     .photo_card__info_user = "Photograph: #{card.user.name}"
     .photo_card__info_footer
       = render "likes/like", photo: card
+      a.button_icon href=photo_path(card.id)
+        =inline_svg 'comments.svg', class: "button_icon__icon"
+        -if card.comments_count > 0
+          span.button_icon__count = card.comments_count
   img.photo_card__photo alt=card.title src=card.photo.large.url
