@@ -5,6 +5,6 @@ class StaticPagesController < ApplicationController
   end
 
   def gallery
-    @photos = Photo.approved
+    @photos = Photo.approved.page(params[:page]).per(5)
   end
 end

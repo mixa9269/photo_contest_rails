@@ -281,3 +281,20 @@ main {
     color: #dcdcdc;
   }
 }
+
+.pagination_block {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.page-link {
+  background: none;
+  border-color: #333;
+  color: #dcdcdc;
+
+  .page-item.active & {
+    background-color: #767676;
+    border-color: #767676;
+  }
+}
