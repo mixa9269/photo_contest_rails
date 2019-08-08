@@ -22,7 +22,7 @@ class PhotosController < ApplicationController
 
   def index
     @search = params[:search] || ''
-    photos = Photo.search(@search)
+    photos = Photo.approved.search(@search)
     if params[:sort] == 'by_date'
       @by_date = true
       photos = photos.reorder(created_at: :desc)
