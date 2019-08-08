@@ -30,10 +30,14 @@ class Photo < ApplicationRecord
     aasm_state == 'approved'
   end
 
+  def self.search(search)
+    where('title LIKE :search OR location LIKE :search', search: "%#{search}%")
+  end
+
   private
     def photo_size
       if photo.size > 5.megabytes
-        errors.add(:photo, "should be less than 5MB")
+        errors.add(:photo, 'should be less than 5MB')
       end
     end
 end

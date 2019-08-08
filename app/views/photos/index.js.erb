@@ -1,0 +1,19 @@
+$('#sorting_tabs').html("<%= escape_javascript(render('photos/sorting_tabs')) %>");
+$('#main').html("<%= escape_javascript(render('photos/main')) %>");
+if (history.pushState) {
+  var params = new URLSearchParams();
+  const page = "<%= params[:page] %>";
+  const sort = "<%= params[:sort] %>";
+  const search = "<%= params[:search] %>";
+  if (page) {
+    params.set("page", page);
+  }
+  if (sort) {
+    params.set("sort", sort);
+  }
+  if (search) {
+    params.set("search", search);
+  }
+  var newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?' + params.toString();
+  window.history.pushState({path:newUrl},'',newUrl);
+}

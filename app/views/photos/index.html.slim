@@ -1,0 +1,8 @@
+.row.gallery_page__top.border-bottom
+  #sorting_tabs
+    = render "photos/sorting_tabs"
+  = form_tag "gallery", method: "get", remote: true
+    = hidden_field_tag :sort, params[:sort]
+    = text_field "", :search, class: "form-control", placeholder: "Search", value: @search
+#main
+  = render 'photos/main'

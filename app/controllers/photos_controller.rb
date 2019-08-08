@@ -20,6 +20,22 @@ class PhotosController < ApplicationController
     @photo = Photo.find_by_id(params[:id])
   end
 
+  def index
+    @search = params[:search] || ''
+    photos = Photo.search(@search)
+    if params[:sort] == 'by_date'
+      @by_date = true
+      photos = photos.reorder(created_at: :desc)
+    elsif params[:sort] == 'by_comments'
+      @by_comments = true
+      photos = photos.reorder(comments_count: :desc)
+    else
+      @by_rating = true
+      photos = photos.reorder(likes_count: :desc)
+    end
+    @photos = photos.page(params[:page]).per(5)
+  end
+
   private
 
     def photo_params
