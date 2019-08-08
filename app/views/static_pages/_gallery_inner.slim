@@ -1,8 +1,9 @@
 #gallery_page
   .row.gallery_page__top.border-bottom
     .btn-group role="group"
-      = render "static_pages/sort_button", title: "By rating", sort_param: "by_rating", active: !@by_date
+      = render "static_pages/sort_button", title: "By rating", sort_param: "by_rating", active: @by_rating
       = render "static_pages/sort_button", title: "By date", sort_param: "by_date", active: @by_date
+      = render "static_pages/sort_button", title: "By comments", sort_param: "by_comments", active: @by_comments
   = render 'static_pages/gallery', cards: @photos
   .pagination_block
     = paginate @photos

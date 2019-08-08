@@ -7,10 +7,13 @@ class StaticPagesController < ApplicationController
   def gallery
     if params[:sort] == 'by_date'
       @by_date = true
-      photos = Photo.approved.reorder(created_at: :desc)
+      photos = Photo.reorder(created_at: :desc)
+    elsif params[:sort] == 'by_comments'
+      @by_comments = true
+      photos = Photo.reorder(comments_count: :desc)
     else
-      @by_date = false
-      photos = Photo.approved.reorder(likes_count: :desc)
+      @by_rating = true
+      photos = Photo.reorder(likes_count: :desc)
     end
     @photos = photos.page(params[:page]).per(5)
   end

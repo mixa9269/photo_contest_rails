@@ -2,7 +2,7 @@ class Photo < ApplicationRecord
   include AASM
 
   belongs_to :user
-  default_scope -> { order(created_at: :desc) }
+  default_scope -> { where(aasm_state: :approved).order(created_at: :desc) }
   scope :by_likes, -> { reorder(likes_count: :desc) }
   scope :approved, -> { where(aasm_state: :approved) }
   mount_uploader :photo, PictureUploader
