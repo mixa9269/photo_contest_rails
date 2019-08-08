@@ -34,5 +34,6 @@ html
     main.container
       .main__content
         - flash.each do |message_type, message|
-          div class=("alert alert-#{message_type}") = message
+          .row.flash_block.border-bottom
+            div class=("alert alert-#{message_type}") = message
         = yield
