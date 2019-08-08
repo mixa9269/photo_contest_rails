@@ -83,6 +83,12 @@ main {
   @include hover {
     border: 1px solid #ededed;
   }
+
+  &.btn-active {
+    border: 1px solid #ededed;
+    z-index: 1;
+    cursor: default;
+  }
 }
 
 .pricing-header {
@@ -297,4 +303,16 @@ main {
     background-color: #767676;
     border-color: #767676;
   }
+}
+
+.gallery_page__top {
+  padding: 10px 20px;
+}
+
+.btn:focus {
+  box-shadow: none;
+}
+
+.page-link:focus {
+  box-shadow: none;
 }
