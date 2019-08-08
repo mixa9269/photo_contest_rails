@@ -74,6 +74,10 @@ main {
   @include hover {
     border-color: #343a40;
   }
+
+  &.btn-dark-grey {
+    color: #dcdcdc;
+  }
 }
 
 .btn-outline-light-2 {

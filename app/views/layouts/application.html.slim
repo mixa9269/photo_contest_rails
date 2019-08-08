@@ -14,6 +14,7 @@ html
           = image_tag("logo.png", :alt => "logo", :class => "logo")
         nav.my-2.my-md-0.mr-md-3
         .header__user
+          a.btn.btn-dark.btn-dark-grey href="/gallery" Gallery
           - if current_user
             .btn-group
               button.btn.btn-dark.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" type="button" 
