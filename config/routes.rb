@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
   get '/api/photos/:photo_id/comments/', to: 'comments#list'
   post '/api/photos/:photo_id/comments/', to: 'comments#create'
+  resources :users, only: [:show , :edit, :update]
   resources :photos, only: [:new, :create, :show]
   resources :likes, only: [:create, :destroy]
 end

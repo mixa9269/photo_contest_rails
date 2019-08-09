@@ -43,7 +43,7 @@ class PhotosController < ApplicationController
     end
 
     def correct_user
-      @micropost = current_user.microposts.find_by(id: params[:id])
-      redirect_to root_url if @micropost.nil?
+      @photo = current_user.photos.find_by(id: params[:id])
+      redirect_to root_url if @photo.nil?
     end
 end

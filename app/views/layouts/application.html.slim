@@ -22,6 +22,8 @@ html
                 = current_user.first_name
               .dropdown-menu.dropdown-menu-right
                 = link_to 'Upload photo', new_photo_path, class: 'dropdown-item'
+                = link_to 'My photos', user_path(current_user), class: 'dropdown-item'
+                = link_to 'Edit my profile', edit_user_path(current_user), class: 'dropdown-item'
                 .dropdown-divider
                 = link_to 'Log Out', logout_path, method: :delete, class: 'dropdown-item'
           - else

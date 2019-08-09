@@ -1,0 +1,7 @@
+-if @user
+  - if @photos
+    = render 'photos/gallery', cards: @photos
+  - else 
+    | Approved photos not found
+-else
+  | User not found

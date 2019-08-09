@@ -1,0 +1,9 @@
+h1.mt-3.mb-3 Edit my profile
+= form_for @user, local: true do |f|
+  = render 'shared/error_messages', object: f.object
+  .form-group
+    label Name
+    = f.text_field :name, class: "form-control", required: true
+  .form-group.row.mt-4
+    .col-sm-10
+      = f.submit 'Submit', class: "btn btn-outline-light-2"
