@@ -8,6 +8,6 @@ Rails.application.routes.draw do
   get '/api/photos/:photo_id/comments/', to: 'comments#list'
   post '/api/photos/:photo_id/comments/', to: 'comments#create'
   resources :users, only: [:show , :edit, :update]
-  resources :photos, only: [:new, :create, :show]
+  resources :photos, only: [:new, :create, :show, :destroy]
   resources :likes, only: [:create, :destroy]
 end

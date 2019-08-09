@@ -219,6 +219,12 @@ main {
       display: flex;
       justify-content: space-between;
     }
+
+    &_delete {
+      display: block;
+      margin-top: 20px;
+      background: none;
+    }
   }
 
   &__photo {

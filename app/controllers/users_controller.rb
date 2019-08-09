@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
   def show
     @user = User.find_by_id(params[:id])
-    @photos = @user.photos if @user
+    @photos = @user.photos.approved if @user
+    @own_profile = @user.id == current_user.id
   end
 
   def edit

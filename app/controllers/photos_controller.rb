@@ -36,6 +36,11 @@ class PhotosController < ApplicationController
     @photos = photos.page(params[:page]).per(5)
   end
 
+  def destroy
+    @photo.destroy
+    redirect_to user_path(current_user)
+  end
+
   private
 
     def photo_params
