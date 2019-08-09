@@ -7,7 +7,7 @@
       window.pc.profilePictureURL = "#{profile_image}";
       window.pc.photoId = #{@photo.id}
     .row.border-bottom 
-      = render 'photos/card', card: @photo
+      = render 'photos/card', card: @photo, hide_comments: true
     #comments.photo__comments
   -else
     | Photo is not approved

@@ -208,6 +208,10 @@ main {
 
     &_user {
       margin-top: 5px;
+
+      a {
+        color: inherit;
+      }
     }
 
     &_footer {

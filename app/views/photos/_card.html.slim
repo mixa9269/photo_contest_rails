@@ -1,13 +1,20 @@
+ruby:
+ user = card.user
+ hide_comments = hide_comments || false
+
 .photo_card
   .photo_card__info
     -if card.location
       .photo_card__info_location = card.location
     .photo_card__info_description = card.title
-    .photo_card__info_user = "Photograph: #{card.user.name}"
+    .photo_card__info_user 
+      span = "Photograph "
+      a href=user_path(user) = user.name
     .photo_card__info_footer
       = render "likes/like", photo: card
-      a.button_icon href=photo_path(card.id)
-        =inline_svg 'comments.svg', class: "button_icon__icon"
-        -if card.comments_count > 0
-          span.button_icon__count = card.comments_count
+      -unless hide_comments
+        a.button_icon href=photo_path(card.id)
+          =inline_svg 'comments.svg', class: "button_icon__icon"
+          -if card.comments_count > 0
+            span.button_icon__count = card.comments_count
   img.photo_card__photo alt=card.title src=card.photo.large.url
