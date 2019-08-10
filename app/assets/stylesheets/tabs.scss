@@ -1,0 +1,84 @@
+.tabs {
+	min-width: 320px;
+	padding: 0px;
+}
+.tabs>section {
+	display: none;
+	padding: 15px 0;
+}
+.tabs>section>p {
+	margin: 0 0 5px;
+	line-height: 1.5;
+	color: #383838;
+	-webkit-animation-duration: 1s;
+	animation-duration: 1s;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+	-webkit-animation-name: fadeIn;
+	animation-name: fadeIn;
+}
+ 
+@-webkit-keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+.tabs>input {
+	display: none;
+	position: absolute;
+}
+.tabs>label {
+	display: inline-block;
+	margin: 0 0 -1px;
+	padding: 6px 25px;
+	font-weight: 600;
+	text-align: center;
+	color: #aaa;
+	border-width: 1px 1px 1px 1px;
+  border-radius: 3px 3px 0 0;
+  background-color: #121212;
+}
+.tabs>label:before {
+	font-family: fontawesome;
+	font-weight: normal;
+	margin-right: 10px;
+}
+.tabs>label:hover {
+	color: #888;
+	cursor: pointer;
+}
+.tabs>input:checked+label {
+	color: #dcdcdc;
+  cursor: default;
+  border: 1px solid #333;
+  border-bottom-color: transparent;
+}
+#tab1:checked~#content-tab1, #tab2:checked~#content-tab2, #tab3:checked~#content-tab3, #tab4:checked~#content-tab4 {
+	display: block;
+}
+ 
+@media screen and (max-width: 680px) {
+	.tabs>label {
+		font-size: 0;
+	}
+	.tabs>label:before {
+		margin: 0;
+		font-size: 18px;
+	}
+}
+@media screen and (max-width: 400px) {
+	.tabs>label {
+		padding: 15px;
+	}
+}

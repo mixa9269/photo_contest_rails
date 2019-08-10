@@ -82,3 +82,5 @@ gem 'inline_svg'
 
 gem 'active_model_serializers'
 gem "kaminari", "~> 1.1"
+
+gem "vkontakte_api", "~> 1.4"

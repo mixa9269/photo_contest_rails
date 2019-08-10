@@ -4,14 +4,22 @@ class PhotosController < ApplicationController
 
   def new
     @photo = current_user.photos.build if logged_in?
+    vk_photos
   end
 
   def create
     @photo = current_user.photos.build(photo_params)
+    if params[:photo_type] == 'vk'
+      vk_image_src = params[:vk_image_src]
+      if vk_image_src
+        @photo.remote_photo_url = vk_image_src
+      end
+    end
     if @photo.save
       flash[:success] = "Photo uploaded! It'll be in rating when it is approved"
       redirect_to root_url
     else
+      vk_photos
       render 'new'
     end
   end
@@ -39,6 +47,12 @@ class PhotosController < ApplicationController
   def destroy
     @photo.destroy
     redirect_to user_path(current_user)
+  end
+
+  def vk_photos
+    vk = VkontakteApi::Client.new(current_user.token)
+    @photos_from_vk =
+      vk.photos.get_all(owner_id: current_user.uid, count: 10).items
   end
 
   private

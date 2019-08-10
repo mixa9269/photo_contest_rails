@@ -9,13 +9,26 @@ h1.mt-3.mb-3 Upload photo
     = f.text_area :title, class: "form-control", required: true
   .form-group
     label Photo
-    .input-group
-      .custom-file
-        = f.file_field :photo,
-          id: "custom-file-input",
-          class: "custom-file-input",
-          accept: "image/jpeg,image/png"
-        label#custom-file-label.custom-file-label Choose file
+    .tabs
+      input#tab1 name="photo_type" value="upload" type="radio" checked="" /
+      label for="tab1" Upload
+      input#tab2 name="photo_type" value="vk" type="radio" /
+      label for="tab2" From vk
+      .border-bottom
+      section#content-tab1
+        .input-group
+          .custom-file
+            = f.file_field :photo,
+              id: "custom-file-input",
+              class: "custom-file-input",
+              accept: "image/jpeg,image/png"
+            label#custom-file-label.custom-file-label Choose file
+      section#content-tab2
+        - @photos_from_vk.each do |photo|
+          label
+            input.radio_image__input type="radio" name="vk_image_src" value=photo.photo_1280
+            img.radio_image__image src=photo.photo_604
+              
   .form-group.row.mt-4
     .col-sm-10
       = f.submit 'Submit', class: "btn btn-outline-light-2"
