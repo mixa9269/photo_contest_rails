@@ -5,9 +5,14 @@ Rails.application.routes.draw do
   get '/gallery', to: 'photos#index'
   get '/auth/:provider/callback', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
-  get '/api/photos/:photo_id/comments/', to: 'comments#list'
-  post '/api/photos/:photo_id/comments/', to: 'comments#create'
   resources :users, only: [:show , :edit, :update]
   resources :photos, only: [:new, :create, :show, :destroy]
   resources :likes, only: [:create, :destroy]
+
+  namespace :api do
+    namespace :v1 do
+      get '/photos/:photo_id/comments/', to: 'comments#index'
+      post '/photos/:photo_id/comments/', to: 'comments#create'
+    end
+  end
 end

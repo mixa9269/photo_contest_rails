@@ -10,7 +10,7 @@ $(document).on('ready turbolinks:load', () => {
     const handleCommentPost = (commentJSON, success, error) => {
       $.ajax({
         type: 'post',
-        url: `/api/photos/${photoId}/comments/`,
+        url: `/api/v1/photos/${photoId}/comments/`,
         data: commentJSON,
         success: function(comment) {
           success(comment)
@@ -37,7 +37,7 @@ $(document).on('ready turbolinks:load', () => {
       getComments: function(success, error) {
         $.ajax({
           type: 'get',
-          url: `/api/photos/${photoId}/comments/`,
+          url: `/api/v1/photos/${photoId}/comments/`,
         success: function(comments) {
           success(comments);
         },
