@@ -13,7 +13,7 @@
  *= require_self
  */
 
-$color-black: #0B0B0B;
+$color-black: #0b0b0b;
 $color-border: #333;
 $color-cod-gray: #121212;
 $color-alto: #dcdcdc;
@@ -31,13 +31,15 @@ $color-alto: #dcdcdc;
   }
 
   @media (hover: hover) {
-    &:hover { @content; }
+    &:hover {
+      @content;
+    }
   }
 }
 
 @font-face {
-  font-family: 'Bariol_bold';
-  src: url('/assets/Bariol_Bold.otf') format("opentype");
+  font-family: "Bariol_bold";
+  src: asset-url("Bariol_Bold.otf") format("opentype");
 }
 
 * {
@@ -68,8 +70,12 @@ main {
   flex-direction: column;
 }
 
-.border-top { border-top: 1px solid $color-border; }
-.border-bottom { border-bottom: 1px solid $color-border !important; }
+.border-top {
+  border-top: 1px solid $color-border;
+}
+.border-bottom {
+  border-bottom: 1px solid $color-border !important;
+}
 
 .logo {
   height: 38px;
@@ -103,7 +109,7 @@ main {
   height: 400px;
   padding: 30px;
   color: #fff;
-  text-shadow: 0 1px 3px rgba(0,0,0,.35);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -132,7 +138,7 @@ main {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,.3);
+    background-color: rgba(0, 0, 0, 0.3);
     pointer-events: none;
   }
 }
@@ -143,7 +149,7 @@ main {
   border-left: 1px solid $color-border;
   border-right: 1px solid $color-border;
   flex-grow: 1;
-} 
+}
 
 .gallery {
   width: 100%;
