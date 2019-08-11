@@ -6,7 +6,7 @@
 	display: none;
 	padding: 15px 0;
 }
-.tabs>section>p {
+.tabs>section {
 	margin: 0 0 5px;
 	line-height: 1.5;
 	color: #383838;
@@ -47,7 +47,7 @@
 	color: #aaa;
 	border-width: 1px 1px 1px 1px;
   border-radius: 3px 3px 0 0;
-  background-color: #121212;
+  background-color: $color-cod-gray;
 }
 .tabs>label:before {
 	font-family: fontawesome;
@@ -59,9 +59,9 @@
 	cursor: pointer;
 }
 .tabs>input:checked+label {
-	color: #dcdcdc;
+	color: $color-alto;
   cursor: default;
-  border: 1px solid #333;
+  border: 1px solid $color-border;
   border-bottom-color: transparent;
 }
 #tab1:checked~#content-tab1, #tab2:checked~#content-tab2, #tab3:checked~#content-tab3, #tab4:checked~#content-tab4 {

@@ -1,0 +1,20 @@
+.pagination_block {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.page-link {
+  background: none;
+  border-color: $color-border;
+  color: $color-alto;
+
+  .page-item.active & {
+    background-color: #767676;
+    border-color: #767676;
+  }
+}
+
+.page-link:focus {
+  box-shadow: none;
+}

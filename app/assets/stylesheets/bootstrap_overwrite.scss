@@ -1,0 +1,44 @@
+.container {
+  max-width: 1300px;
+
+  @media (max-width: 1300px) {
+    max-width: 1140px;
+  }
+}
+
+.btn-dark {
+  background-color: transparent !important;
+  border-color: transparent;
+
+  @include hover {
+    border-color: #343a40;
+  }
+
+  &.btn-dark-grey {
+    color: $color-alto;
+  }
+}
+
+.btn-outline-light-2 {
+  color: $color-alto !important;
+  border: 1px solid #767676;
+
+  @include hover {
+    border: 1px solid $color-alto;
+  }
+
+  &.btn-active {
+    border: 1px solid $color-alto;
+    z-index: 1;
+    cursor: default;
+  }
+}
+
+.btn:focus {
+  box-shadow: none;
+}
+
+.alert {
+  background: none;
+  border-color: $color-border;
+}

@@ -11,12 +11,19 @@
  * It is generally better to create a new file per style scope.
  *
  *= require_self
- *= require jquery-comments
- *= require tabs
- *= require radio_images
  */
 
+$color-black: #0B0B0B;
+$color-border: #333;
+$color-cod-gray: #121212;
+$color-alto: #dcdcdc;
+
 @import "bootstrap";
+@import "/bootstrap_overwrite";
+@import "/tabs";
+@import "/radio_images";
+@import "/pagination";
+@import "/jquery-comments";
 
 @mixin hover {
   &:active {
@@ -50,8 +57,8 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: #0B0B0B;
-  color: #dcdcdc;
+  background: $color-black;
+  color: $color-alto;
   min-width: 600px;
 }
 
@@ -61,63 +68,16 @@ main {
   flex-direction: column;
 }
 
-.container {
-  max-width: 1300px;
-
-  @media (max-width: 1300px) {
-    max-width: 1140px;
-  }
-}
-
-.btn-dark {
-  background-color: transparent !important;
-  border-color: transparent;
-
-  @include hover {
-    border-color: #343a40;
-  }
-
-  &.btn-dark-grey {
-    color: #dcdcdc;
-  }
-}
-
-.btn-outline-light-2 {
-  color: #dcdcdc !important;
-  border: 1px solid #767676;
-
-  @include hover {
-    border: 1px solid #ededed;
-  }
-
-  &.btn-active {
-    border: 1px solid #ededed;
-    z-index: 1;
-    cursor: default;
-  }
-}
-
-.pricing-header {
-  max-width: 700px;
-}
-
-.card-deck .card {
-  min-width: 220px;
-}
-
-.border-top { border-top: 1px solid #333; }
-.border-bottom { border-bottom: 1px solid #333 !important; }
-
-
-.box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
+.border-top { border-top: 1px solid $color-border; }
+.border-bottom { border-bottom: 1px solid $color-border !important; }
 
 .logo {
   height: 38px;
 }
 
 .header {
-  background-color: #121212;
-  border-bottom: 1px solid #333;
+  background-color: $color-cod-gray;
+  border-bottom: 1px solid $color-border;
 
   &__avatar {
     height: 26px;
@@ -179,15 +139,15 @@ main {
 
 .main__content {
   padding: 0 15px;
-  background-color: #121212;
-  border-left: 1px solid #333;
-  border-right: 1px solid #333;
+  background-color: $color-cod-gray;
+  border-left: 1px solid $color-border;
+  border-right: 1px solid $color-border;
   flex-grow: 1;
 } 
 
 .gallery {
   width: 100%;
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid $color-border;
 }
 
 .photo_card {
@@ -197,7 +157,7 @@ main {
     width: 250px;
     padding: 10px 20px;
     flex-shrink: 0;
-    border-right: 1px solid #333;
+    border-right: 1px solid $color-border;
     font-size: 13px;
 
     &_location {
@@ -251,7 +211,7 @@ main {
 
   &:not(:disabled) {
     @include hover {
-      color: #ededed;
+      color: $color-alto;
     }
   }
 
@@ -279,45 +239,28 @@ main {
 
 .form-control,
 .form-control:focus {
-  border: 1px solid #333;
-  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid $color-border;
+  background: $color-black;
   box-shadow: none;
-  color: #dcdcdc;
+  color: $color-alto;
 }
 
 .custom-file-input {
   cursor: pointer;
 
   &:focus ~ .custom-file-label {
-    border: 1px solid #333;
+    border: 1px solid $color-border;
     box-shadow: none;
   }
 }
 
 .custom-file-label {
-  border: 1px solid #333;
-  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid $color-border;
+  background: $color-black;
 
   &:after {
     background: none;
-    color: #dcdcdc;
-  }
-}
-
-.pagination_block {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-.page-link {
-  background: none;
-  border-color: #333;
-  color: #dcdcdc;
-
-  .page-item.active & {
-    background-color: #767676;
-    border-color: #767676;
+    color: $color-alto;
   }
 }
 
@@ -328,21 +271,8 @@ main {
   justify-content: space-between;
 }
 
-.btn:focus {
-  box-shadow: none;
-}
-
-.page-link:focus {
-  box-shadow: none;
-}
-
 .flash_block {
   margin-top: 1em;
   display: flex;
   justify-content: center;
-}
-
-.alert {
-  background: none;
-  border-color: #333;
 }

@@ -23,7 +23,7 @@ $(document).on('ready turbolinks:load', () => {
       profilePictureURL: profilePictureURL,
       enableNavigation: false,
       enableUpvoting: false,
-      highlightColor: "#121212",
+      highlightColor: "$color-cod-gray",
       enableEditing: false,
       postComment: handleCommentPost,
       fieldMappings: {
