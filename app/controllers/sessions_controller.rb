@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SessionsController < ApplicationController
   def create
     @user = User.find_or_create_from_auth_hash(auth_hash)
@@ -6,15 +8,13 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    if current_user
-      session.delete(:user_id)
-    end
+    session.delete(:user_id) if current_user
     redirect_to root_path
   end
- 
+
   protected
- 
-    def auth_hash
-      request.env['omniauth.auth']
-    end
+
+  def auth_hash
+    request.env['omniauth.auth']
+  end
 end

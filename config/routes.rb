@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
@@ -5,9 +7,9 @@ Rails.application.routes.draw do
   get '/gallery', to: 'photos#index'
   get '/auth/:provider/callback', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
-  resources :users, only: [:show , :edit, :update]
-  resources :photos, only: [:new, :create, :show, :destroy]
-  resources :likes, only: [:create, :destroy]
+  resources :users, only: %i[show edit update]
+  resources :photos, only: %i[new create show destroy]
+  resources :likes, only: %i[create destroy]
 
   namespace :api do
     namespace :v1 do

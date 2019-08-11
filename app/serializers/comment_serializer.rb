@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CommentSerializer < ActiveModel::Serializer
   attributes :id, :content, :fullname, :created_at,
              :profile_picture_url, :parent_id

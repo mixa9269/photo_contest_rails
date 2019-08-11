@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
   def show
     @user = User.find_by_id(params[:id])
@@ -17,9 +19,9 @@ class UsersController < ApplicationController
     @user = User.find_by_id(params[:id])
     name = params[:user][:name]
     @user.name = name
-    @user.first_name = name.split(" ")[0]
+    @user.first_name = name.split(' ')[0]
     if @user.save
-      flash[:success] = "Your profile updated"
+      flash[:success] = 'Your profile updated'
       redirect_to root_url
     else
       render 'new'

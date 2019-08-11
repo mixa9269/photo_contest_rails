@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ActiveAdmin.register Photo do
   index do
     selectable_column
@@ -5,8 +7,8 @@ ActiveAdmin.register Photo do
       image_tag pg.photo.thumb.url
     end
     column :title
-    column "Status", :aasm_state
-    column "Moderation", :moderation do |pg|
+    column 'Status', :aasm_state
+    column 'Moderation', :moderation do |pg|
       columns do
         if pg.aasm_state == 'unapproved'
           column do
@@ -20,15 +22,15 @@ ActiveAdmin.register Photo do
       end
     end
     actions
-    end
-  
-    member_action :approve do
-      resource.approve!
-      redirect_to admin_photos_path
-    end
+  end
 
-    member_action :unapprove do
-      resource.unapprove!
-      redirect_to admin_photos_path
-    end
+  member_action :approve do
+    resource.approve!
+    redirect_to admin_photos_path
+  end
+
+  member_action :unapprove do
+    resource.unapprove!
+    redirect_to admin_photos_path
+  end
 end

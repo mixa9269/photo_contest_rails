@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class PhotosController < ApplicationController
-  before_action :logged_in_user, only: [:new, :create, :destroy]
+  before_action :logged_in_user, only: %i[new create destroy]
   before_action :correct_user,   only: :destroy
 
   def new
@@ -11,9 +13,7 @@ class PhotosController < ApplicationController
     @photo = current_user.photos.build(photo_params)
     if params[:photo_type] == 'vk'
       vk_image_src = params[:vk_image_src]
-      if vk_image_src
-        @photo.remote_photo_url = vk_image_src
-      end
+      @photo.remote_photo_url = vk_image_src if vk_image_src
     end
     if @photo.save
       flash[:success] = "Photo uploaded! It'll be in rating when it is approved"
@@ -57,12 +57,12 @@ class PhotosController < ApplicationController
 
   private
 
-    def photo_params
-      params.require(:photo).permit(:title, :photo, :location)
-    end
+  def photo_params
+    params.require(:photo).permit(:title, :photo, :location)
+  end
 
-    def correct_user
-      @photo = current_user.photos.find_by(id: params[:id])
-      redirect_to root_url if @photo.nil?
-    end
+  def correct_user
+    @photo = current_user.photos.find_by(id: params[:id])
+    redirect_to root_url if @photo.nil?
+  end
 end

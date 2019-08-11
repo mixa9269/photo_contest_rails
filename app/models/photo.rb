@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Photo < ApplicationRecord
   include AASM
 
@@ -35,9 +37,8 @@ class Photo < ApplicationRecord
   end
 
   private
-    def photo_size
-      if photo.size > 5.megabytes
-        errors.add(:photo, 'should be less than 5MB')
-      end
-    end
+
+  def photo_size
+    errors.add(:photo, 'should be less than 5MB') if photo.size > 5.megabytes
+  end
 end
