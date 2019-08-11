@@ -7,10 +7,10 @@ class LikesController < ApplicationController
 
     @like = @photo.likes.build
     @like.user_id = current_user.id
-    if @like.valid?
-      @like.save
-      @photo.reload
-    end
+    return unless @like.valid?
+
+    @like.save
+    @photo.reload
   end
 
   def destroy

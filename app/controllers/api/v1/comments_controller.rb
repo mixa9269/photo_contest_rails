@@ -11,10 +11,10 @@ module Api
         @comment.content = params[:content]
         parent_id = params[:parent_id]
         @comment.parent_id = parent_id
-        if @comment.valid?
-          @comment.save
-          render json: @comment, serializer: CommentSerializer
-        end
+        return unless @comment.valid?
+
+        @comment.save
+        render json: @comment, serializer: CommentSerializer
       end
 
       def index
