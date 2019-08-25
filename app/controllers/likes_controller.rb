@@ -5,11 +5,8 @@ class LikesController < ApplicationController
     @photo = Photo.find(params[:photo_id])
     return if current_user.id == @photo.user_id
 
-    @like = @photo.likes.build
-    @like.user_id = current_user.id
-    return unless @like.valid?
-
-    @like.save
+    outcome = Likes::Create.run(photo: @photo, user: current_user)
+    return unless outcome.valid?
     @photo.reload
   end
 
