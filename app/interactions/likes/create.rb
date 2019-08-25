@@ -8,7 +8,7 @@ module Likes
     def execute
       like = photo.likes.create(user_id: user.id)
 
-      errors.merge!(photo.errors) unless like.save
+      errors.merge!(like.errors) unless like.save
 
       like
     end
