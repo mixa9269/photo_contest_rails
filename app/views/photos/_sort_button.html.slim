@@ -1,4 +1,5 @@
-- if active
+- is_active = @sort == param
+- if is_active
   .btn.btn-outline-light-2.btn-active = title
 -else
-  = link_to_if !active, title, request.params.merge(sort: sort_param), { class: "btn btn-outline-light-2", remote: true }
+  = link_to_if !is_active, title, request.params.merge(sort: param), { class: "btn btn-outline-light-2", remote: true }
