@@ -84,3 +84,6 @@ gem 'active_model_serializers'
 gem "kaminari", "~> 1.1"
 
 gem "vkontakte_api", "~> 1.4"
+
+gem 'snp-best-practices',
+  git: 'git@git.snpdev.ru:saltpepper/snp-best-practices.git'
