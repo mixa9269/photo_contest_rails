@@ -10,15 +10,13 @@ class PhotosController < ApplicationController
   end
 
   def create
-    @photo = current_user.photos.build(photo_params)
-    if params[:photo_type] == 'vk'
-      vk_image_src = params[:vk_image_src]
-      @photo.remote_photo_url = vk_image_src if vk_image_src
-    end
-    if @photo.save
+    outcome = Photos::Create.run(photo_params)
+    if outcome.valid?
+      @photo = outcome.result
       flash[:success] = "Photo uploaded! It'll be in rating when it is approved"
       redirect_to root_url
     else
+      @photo = outcome
       vk_photos
       render 'new'
     end
@@ -48,7 +46,14 @@ class PhotosController < ApplicationController
   private
 
   def photo_params
-    params.require(:photo).permit(:title, :photo, :location)
+    {
+      title: params[:photo][:title],
+      location: params[:photo][:location],
+      photo_type: params[:photo_type],
+      photo_file: params[:photo][:photo],
+      vk_image_src: params[:vk_image_src],
+      user: current_user
+    }
   end
 
   def correct_user

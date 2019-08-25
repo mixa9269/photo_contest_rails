@@ -87,3 +87,5 @@ gem "vkontakte_api", "~> 1.4"
 
 gem 'snp-best-practices',
   git: 'git@git.snpdev.ru:saltpepper/snp-best-practices.git'
+
+gem 'active_interaction', '~> 3.6'
