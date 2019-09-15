@@ -14,8 +14,6 @@ class User < ApplicationRecord
     liked_photos.include?(photo)
   end
 
-  private
-
   def self.params_update(auth_hash, user)
     {
       name: auth_hash.info.name,
