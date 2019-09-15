@@ -7,6 +7,7 @@ class LikesController < ApplicationController
 
     outcome = Likes::Create.run(photo: @photo, user: current_user)
     return unless outcome.valid?
+
     @photo.reload
   end
 
