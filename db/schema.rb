@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_06_100647) do
+ActiveRecord::Schema.define(version: 2019_11_12_061026) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -88,6 +88,8 @@ ActiveRecord::Schema.define(version: 2019_08_06_100647) do
     t.string "profile_image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "auth_token"
+    t.index ["auth_token"], name: "index_users_on_auth_token", unique: true
   end
 
 end
