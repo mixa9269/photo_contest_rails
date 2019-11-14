@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       get '/photos/:photo_id/comments/', to: 'comments#index'
       post '/photos/:photo_id/comments/', to: 'comments#create'
-      resources :photos, only: %i[index show]
+      resources :photos, only: %i[index show create destroy]
     end
   end
 end

@@ -2,6 +2,8 @@
 
 module Api
   class ApiController < ApplicationController
+    protect_from_forgery with: :null_session
+
     def api_show(collection, serializer)
       object = collection.find_by(id: params[:id])
       if object
@@ -11,14 +13,10 @@ module Api
       end
     end
 
-    def api_destroy(collection)
-      object = collection.find_by(id: params[:id])
-      if object
-        object.destroy
-        render json: { status: 'ok' }, status: :ok
-      else
-        render json: { error: 'not_found' }, status: :bad_request
-      end
+    def verify_auth_token
+      token = request.headers['token']
+      @user = User.find_by(auth_token: token)
+      render json: { error: 'user_not_found' }, status: :not_found unless @user
     end
   end
 end
